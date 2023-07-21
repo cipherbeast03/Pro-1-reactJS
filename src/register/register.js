@@ -39,15 +39,15 @@ function Register() {
     <div>
       <form className="form-container">
         <h2>Register</h2>
-        <label htmlfor={firstname}>First Name: </label>
+        <label htmlFor={firstname}>First Name: </label>
         <input value={firstname} onChange={handleFirstname} />
-        <label htmlfor={lastname}>Last Name: </label>
+        <label htmlFor={lastname}>Last Name: </label>
         <input value={lastname} onChange={handleLastname} />
-        <label htmlfor={username}>Email: </label>
+        <label htmlFor={username}>Email: </label>
         <input value={username} onChange={handleUsername} />
-        <label htmlfor={password}>Password: </label>
+        <label htmlFor={password}>Password: </label>
         <input type="password" value={password} onChange={handlePassword} />
-        <label htmlfor={confirmPassword}>Confirm Password: </label>
+        <label htmlFor={confirmPassword}>Confirm Password: </label>
         <input value={confirmPassword} onChange={handleConfirmPassword} />
         <button onClick={handleSubmit}>Sumbit</button>
         {error && <p className="error-message">{error}</p>}

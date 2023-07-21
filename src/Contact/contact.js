@@ -15,9 +15,9 @@ const Contact = () => {
       <form className="form-container">
         <label htmlfor="mail">Mail: </label>
         <input type="mail" />
-        <label htmlfor="phnumber">Phone No: </label>
+        <label htmlFor="phnumber">Phone No: </label>
         <input type="number" />
-        <label htmlfor="message">Message: </label>
+        <label htmlFor="message">Message: </label>
         <input type="text" />
       </form>
     </div>

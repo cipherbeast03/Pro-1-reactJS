@@ -4,7 +4,7 @@ import Register from './register/register';
 import Login from './login/login';
 import Home from './home/home';
 import About from './About/about';
-import PrivateRoutes from './Functions/PrivateRoutes';
+import PrivateRoute from './Functions/PrivateRoutes';
 import Contact from './Contact/contact';
 import './style.css';
 
@@ -46,7 +46,7 @@ export default function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route element={<PrivateRoutes />}>
+        <Route element={<PrivateRoute />}>
           <Route path="/contact" element={<Contact />} />
         </Route>
         <Route path="/login" element={<Login />} />
