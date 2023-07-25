@@ -1,7 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './contact.css';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    mail: '',
+    phnumber: '',
+    message: '',
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Send the data to the backend API endpoint using the Fetch API
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the backend if needed
+        console.log('Response from server:', data);
+      })
+      .catch((error) => {
+        console.error('Error sending data:', error);
+      });
+  };
+
   return (
     <div className="home-container">
       <h1>Contact us</h1>
@@ -12,13 +43,29 @@ const Contact = () => {
           width="400px"
         />
       </center>
-      <form className="form-container">
-        <label htmlfor="mail">Mail: </label>
-        <input type="mail" />
+      <form className="form-container" onSubmit={handleSubmit}>
+        <label htmlFor="mail">Mail: </label>
+        <input
+          type="mail"
+          name="mail"
+          value={formData.mail}
+          onChange={handleChange}
+        />
         <label htmlFor="phnumber">Phone No: </label>
-        <input type="number" />
+        <input
+          type="number"
+          name="phnumber"
+          value={formData.phnumber}
+          onChange={handleChange}
+        />
         <label htmlFor="message">Message: </label>
-        <input type="text" />
+        <input
+          type="text"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+        />
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
