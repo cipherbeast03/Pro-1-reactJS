@@ -17,8 +17,13 @@ function Login() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('working');
+    if (username === 'Anush' && password === 'anush') {
+      e.preventDefault();
+      setMessage('Logged in successfully');
+    } else {
+      e.preventDefault();
+      setMessage('Check user credentials');
+    }
   };
 
   return (
