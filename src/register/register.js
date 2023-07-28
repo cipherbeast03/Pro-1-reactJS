@@ -24,16 +24,47 @@ function Register() {
   const handleConfirmPassword = (event) => {
     setConfirmPassword(event.target.value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      console.log(firstname, lastname, username, password);
-      localStorage.setItem('username', username);
-      localStorage.setItem('password', password);
-      localStorage.setItem('firstname', firstname);
+      try {
+        // Send the form data to the backend using the Fetch API
+        const response = await fetch('/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstname,
+            lastname,
+            username,
+            password,
+          }),
+        });
+
+        // Check the response status and show appropriate message
+        if (response.ok) {
+          console.log('Registration successful');
+          // Perform any additional actions after successful registration if needed
+        } else {
+          setError('An error occurred. Please try again later.');
+        }
+      } catch (error) {
+        console.error('Error sending data:', error);
+        setError('An error occurred. Please try again later.');
+      }
     } else {
       setError('Passwords do not match!!!');
     }
+
+    // if (password === confirmPassword) {
+    //   console.log(firstname, lastname, username, password);
+    //   localStorage.setItem('username', username);
+    //   localStorage.setItem('password', password);
+    //   localStorage.setItem('firstname', firstname);
+    // } else {
+    //   setError('Passwords do not match!!!');
+    // }
   };
   return (
     <div>
