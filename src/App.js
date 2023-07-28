@@ -6,6 +6,7 @@ import Home from './home/home';
 import About from './About/about';
 import PrivateRoute from './Functions/PrivateRoutes';
 import Contact from './Contact/contact';
+import Admin from './Admin/admin';
 import './style.css';
 
 // Login submit handle
@@ -30,6 +31,11 @@ export default function App() {
               <a>Contact</a>
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/admin">
+              <a>Admin</a>
+            </NavLink>
+          </li>
         </ul>
         <ul className="nav-links">
           <li>
@@ -52,6 +58,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       {/* {signupMessage && <p>{signupMessage}</p>} */}
     </div>
